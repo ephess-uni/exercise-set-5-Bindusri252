@@ -1,12 +1,15 @@
 """ ex_5_3.py
 This module contains an entry point that:
-
 - creates a CLi that accepts an input file of data to be processed
 - shifts and scales the data to a mean of 0 and a standard deviation 1
 - writes the file to the output file argument
 """
 import numpy as np
 from argparse import ArgumentParser
+try:
+    from src.util import get_repository_root
+except ImportError:
+    from util import get_repository_root
 
 if __name__ == "__main__":
     # Create your argument parser object here.
@@ -27,3 +30,4 @@ if __name__ == "__main__":
     root_dir = get_repository_root()
     os.makedirs(root_dir / "outputs", exist_ok=True)
     np.savetxt(args.outfile, processed, fmt='%.2e')
+
